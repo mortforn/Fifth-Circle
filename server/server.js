@@ -16,10 +16,12 @@ app.use(bodyParser.urlencoded({
 const mainRoutes = require('./routes/main')
 const generateMusic = require('./routes/generate-musicdb')
 const userRoutes = require('./routes/user')
+const intervalRoute = require('./routes/intervals')
 
 app.use(mainRoutes)
 app.use(generateMusic)
 app.use(userRoutes)
+app.use(intervalRoute)
 
 app.listen(8000, () => {
   console.log('Node.js listening on port ' + 8000)
