@@ -1,11 +1,9 @@
 const express = require('express')
-const cors = require('cors')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
-con
-
-mongoose.connect('mongodb://localhost/fifthcircle')
+mongoose.connect('mongodb://localhost/FifthCircle')
 
 const app = express()
 
@@ -15,13 +13,16 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
-const mainRoutes = require('./routes/main');
+const mainRoutes = require('./routes/main')
+const generateMusic = require('./routes/generate-musicdb')
+const userRoutes = require('./routes/user')
 
 app.use(mainRoutes)
+app.use(generateMusic)
+app.use(userRoutes)
 
-const port = process.env.PORT || 8000
-app.listen(port, () => {
-  console.log('Server listening on port ' + port)
+app.listen(8000, () => {
+  console.log('Node.js listening on port ' + 8000)
 })
 
 module.exports = app;
