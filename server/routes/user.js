@@ -19,4 +19,11 @@ router.post('/api/user', (req, res) => {
   res.send(JSON.stringify(newUser));
 })
 
+router.get('/api/user/:id', (req, res) => {
+  User.find({ username : req.body.username }, (err, users) => {
+    if (err) throw err;
+    res.send(JSON.stringify(users))
+  })
+})
+
 module.exports = router;
