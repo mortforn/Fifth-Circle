@@ -2,10 +2,17 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const app = express()
+const server = require('http').Server(app);
 
 mongoose.connect('mongodb://localhost/FifthCircle')
 
-const app = express()
+app.use((req, res, next) => {
+  res.append('Access-Control-Allow-Headers', ['email', 'Authorization', 'x-forwarded-proto', 'host']);
+  res.append('Content-Type','application/json');
+  next();
+});
+
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -23,7 +30,7 @@ app.use(generateMusic)
 app.use(userRoutes)
 app.use(intervalRoute)
 
-app.listen(8000, () => {
+server.listen(8000, () => {
   console.log('Node.js listening on port ' + 8000)
 })
 
