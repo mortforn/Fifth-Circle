@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const Interval = require('../models/interval')
-// const Cmaj2 = require('../client/src/components/audio-files/CMajor2nd.wav')
 
 router.get('/api/generate-music-files', async (req, res) => {
 
