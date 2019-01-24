@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Interval = require('../models/interval')
+// const Cmaj2 = require('../client/src/components/audio-files/CMajor2nd.wav')
 
 router.get('/api/generate-music-files', async (req, res) => {
 
@@ -11,49 +12,49 @@ router.get('/api/generate-music-files', async (req, res) => {
       root: 'C',
       degree: 'Major Second',
       note: 'D',
-      source: '../components/audio-files/CMajor2nd.wav'
+      source: 'https://s3.amazonaws.com/mortfornintervals/CMajor2nd.wav'
     })
 
     const cMajorThird = new Interval({
       root: 'C',
       degree: 'Major Third',
       note: 'E',
-      source: '../components/audio-files/CMajor3rd.wav'
+      source: 'https://s3.amazonaws.com/mortfornintervals/CMajor3rd.wav'
     })
 
     const cPerfFourth = new Interval({
       root: 'C',
       degree: 'Perfect Fourth',
       note: 'F',
-      source: '../components/audio-files/CPerf4th.wav'
+      source: 'https://s3.amazonaws.com/mortfornintervals/CPerf4th.wav'
     }) 
     
     const cPerfFifth = new Interval({
       root: 'C',
       degree: 'Perfect Fifth',
       note: 'G',
-      source: '../components/audio-files/CPerf5th.wav'
+      source: 'https://s3.amazonaws.com/mortfornintervals/CPerf5th.wav'
     })
 
     const cMajorSixth = new Interval({
       root: 'C',
       degree: 'Major Sixth',
       note: 'A',
-      source: '../components/audio-files/CMajor6th.wav'
+      source: 'https://s3.amazonaws.com/mortfornintervals/CMajor6th.wav'
     })
 
     const cMajorSeventh = new Interval({
       root: 'C',
       degree: 'Major Seventh',
       note: 'B',
-      source: '../components/audio-files/CMajor7th.wav'
+      source: 'https://s3.amazonaws.com/mortfornintervals/CMajor7th.wav'
     })
 
     const cOctave = new Interval({
       root: 'C',
       degree: 'Octave',
       note: 'C',
-      source: '../components/audio-files/COctave.wav'
+      source: 'https://s3.amazonaws.com/mortfornintervals/COctave.wav'
     })
 
     await cMajorSecond.save();
