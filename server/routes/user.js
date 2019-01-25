@@ -26,4 +26,12 @@ router.get('/api/user/:id', (req, res) => {
   })
 })
 
+// router.post('/api/:userId/correct', (req, res) => {
+//   res.send('poop')
+// )}
+
+// router.post('/api/:userId/wrong', (req, res) => {
+
+// )}
+
 module.exports = router;
