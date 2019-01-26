@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const User = require('../models/user')
 
-//get users
+//get users and sort by score
 router.get('/api/users', (req, res) => {
-  User.find({}, (err, users) => {
+  User.aggregate([{ $sort: {score: 1}}], (err, users) => {
     if (err) throw err;
     res.send(JSON.stringify(users))
   })
@@ -26,10 +26,16 @@ router.get('/api/user/:id', (req, res) => {
   })
 })
 
-// router.post('/api/:userId/correct', (req, res) => {
-//   res.send('poop')
-// )}
-
+router.post('/api/user/finalscore', (req, res) => {
+  User.find({ username: req.body.username}, (err, user) => {
+    if (err) throw err;
+    if (!user) {
+      return res.send(404, 'No user was found');
+    }
+    user.score = req.body.score;
+    res.send(JSON.stringify(user))
+  })
+})
 // router.post('/api/:userId/wrong', (req, res) => {
 
 // )}

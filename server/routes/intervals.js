@@ -20,7 +20,6 @@ router.get('/api/major-intervals', (req, res) => {
 
 router.get('/api/minor-intervals', (req, res) => {
   Interval.find({ "degree": /Minor/i })
-  .limit(10)
   .exec((err, intervals) => {
     if (err) throw err;
     res.send(JSON.stringify(intervals))

@@ -5,6 +5,7 @@ const cors = require('cors')
 const app = express()
 const server = require('http').Server(app);
 
+const PORT = process.env.NODE_ENV || 7000
 mongoose.connect('mongodb://localhost/FifthCircle')
 
 app.use((req, res, next) => {
@@ -30,8 +31,8 @@ app.use(generateMusic)
 app.use(userRoutes)
 app.use(intervalRoute)
 
-server.listen(8000, () => {
-  console.log('Node.js listening on port ' + 8000)
+server.listen(PORT, () => {
+  console.log('Node.js listening on port ' + PORT)
 })
 
 module.exports = app;
