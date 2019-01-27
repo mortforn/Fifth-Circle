@@ -34,4 +34,12 @@ router.get('/api/easy-intervals', (req, res) => {
   })
 })
 
+router.get('/api/diatonic-intervals', (req, res) => {
+  Interval.find({'degree': {$in: ['Major Third', 'Major Second', 'Perfect Fourth', 'Perfect Fifth', 'Major Sixth', 'Major Seventh', 'Octave']}})
+  .limit(10)
+  .exec((err, intervals) => {
+    res.send(JSON.stringify(intervals))
+  })
+})
+
 module.exports = router;

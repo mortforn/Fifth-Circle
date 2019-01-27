@@ -5,7 +5,7 @@ const cors = require('cors')
 const app = express()
 const server = require('http').Server(app);
 
-const PORT = process.env.NODE_ENV || 7000
+const PORT = process.env.NODE_ENV || 8000
 mongoose.connect('mongodb://localhost/FifthCircle')
 
 app.use((req, res, next) => {
