@@ -9,21 +9,8 @@ router.get('/api/users', (req, res) => {
   })
 })
 
-//add a user
-// router.post('/api/user', (req, res) => {
-//   let newUser = new User({
-//     username: req.body.username,
-//     score: 0
-//   })
-//   newUser.save();
-//   res.send(JSON.stringify(newUser));
-// })
-
 router.post('/api/user', (req, res) => {
   const username = req.body.username;
-  if (!username) {
-    return res.status(422, 'You must enter a valid username')
-  }
   User.findOne({ username: username}, (err, existingUser) => {
     if (err) throw err
     if (existingUser) {

@@ -42,4 +42,11 @@ router.get('/api/diatonic-intervals', (req, res) => {
   })
 })
 
+router.get('/api/specific-intervals', (req, res) => {
+  Interval.find({'root' : req.body.root})
+  .exec((err, intervals) => {
+    if (err) throw err;
+    res.send(JSON.stringify(intervals))
+  })
+})
 module.exports = router;
