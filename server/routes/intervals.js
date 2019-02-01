@@ -43,10 +43,12 @@ router.get('/api/diatonic-intervals', (req, res) => {
 })
 
 router.get('/api/specific-intervals', (req, res) => {
-  Interval.find({'root' : req.body.root})
-  .exec((err, intervals) => {
+  let rootNote = req.query.rootNote || ''
+  let degree = req.query.degree || ''
+  Interval.findOne({root : rootNote, degree: degree})
+  .exec((err, interval) => {
     if (err) throw err;
-    res.send(JSON.stringify(intervals))
+    res.send(JSON.stringify(interval))
   })
 })
 module.exports = router;
