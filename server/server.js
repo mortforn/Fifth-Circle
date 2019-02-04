@@ -6,7 +6,9 @@ const app = express()
 const server = require('http').Server(app);
 
 const PORT = process.env.NODE_ENV || 8000
-mongoose.connect('mongodb://localhost/FifthCircle')
+
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/FifthCircle'
+mongoose.connect(MONGODB_URI)
 
 app.use((req, res, next) => {
   res.append('Access-Control-Allow-Headers', ['email', 'Authorization', 'x-forwarded-proto', 'host']);
