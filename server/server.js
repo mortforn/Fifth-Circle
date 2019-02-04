@@ -10,6 +10,18 @@ const PORT = process.env.NODE_ENV || 8000
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/FifthCircle'
 mongoose.connect(MONGODB_URI)
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(function(req, res, next){
+    console.log('request', req);
+    if(req.header('x-forwarded-proto') !== 'https'){
+      console.log('redirecting', req);
+      res.redirect('https://radiant-beach-20088.herokuapp.com/' + req.url);
+    }else{
+      next();
+    }
+  })
+  }
+
 app.use((req, res, next) => {
   res.append('Access-Control-Allow-Headers', ['email', 'Authorization', 'x-forwarded-proto', 'host']);
   res.append('Content-Type','application/json');
